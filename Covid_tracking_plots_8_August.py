@@ -121,7 +121,7 @@ plt.subplots_adjust(wspace=0.75)
 
 plt.savefig(r'figures/%s.png'% ('US'), dpi=250, bbox_inches='tight', pad_inches=1)
 
-plt.show()
+#plt.show()
 
 
 # In[7]:
@@ -291,7 +291,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     plt.subplots_adjust(wspace=0.65)
     
     plt.savefig(r'figures/%s.png'% (state_full_name), dpi=150, bbox_inches='tight', pad_inches=1)
-    plt.show()
+    #plt.show()
 
 
 # In[5]:
@@ -465,7 +465,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     plt.subplots_adjust(wspace=0.65)
     
     #plt.savefig(r'covid_tracking_plots\experimental/%s.png'% (state_full_name+date+'_2'), dpi=150, bbox_inches='tight', pad_inches=1)
-    plt.show()
+    #plt.show()
 
 
 # In[ ]:
