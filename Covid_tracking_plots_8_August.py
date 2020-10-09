@@ -198,7 +198,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
         'VT': 'Vermont',
         'WA': 'Washington',
         'WI': 'Wisconsin',
-        'WV': 'West Virginia',
+        'WV': 'West_Virginia',
         'WY': 'Wyoming'
              }
     state_full_name = str(states[focus_state])
