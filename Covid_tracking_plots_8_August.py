@@ -120,6 +120,7 @@ plt.subplots_adjust(wspace=0.75)
 
 
 plt.savefig('figures/US.png', dpi=250, bbox_inches='tight', pad_inches=1)
+plt.close(fig)
 
 #plt.show()
 
@@ -291,6 +292,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     plt.subplots_adjust(wspace=0.65)
     
     plt.savefig('figures/%s.png'% (state_full_name), dpi=150, bbox_inches='tight', pad_inches=1)
+    plt.close(fig)
     #plt.show()
 
 
