@@ -119,7 +119,7 @@ for ax in axis:
 plt.subplots_adjust(wspace=0.75)
 
 
-plt.savefig(r'figures/%s.png'% ('US'), dpi=250, bbox_inches='tight', pad_inches=1)
+plt.savefig(r'figures/%s.png'% ('US'), dpi=300, bbox_inches='tight', pad_inches=1)
 plt.close(fig)
 
 #plt.show()
@@ -291,7 +291,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     # SETTING WIDTH BETWEEN THE PLOTS #
     plt.subplots_adjust(wspace=0.65)
 
-    plt.savefig(r'figures/%s.png'% (state_full_name), dpi=150, bbox_inches='tight', pad_inches=1)
+    plt.savefig(r'figures/%s.png'% (state_full_name), dpi=300, bbox_inches='tight', pad_inches=1)
     plt.close(fig)
     #plt.show()
 
