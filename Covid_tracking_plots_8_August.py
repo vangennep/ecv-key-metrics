@@ -100,7 +100,7 @@ for ax in axis:
 # SETTING TICK LIMITS #
 axis[0].set_ylim(bottom=0)
 axis[1].set_ylim(bottom=0, top=1000000)
-axis[2].set_ylim(bottom=0, top=60)
+axis[2].set_ylim(bottom=0, top=30)
 axis[3].set_ylim(bottom=0, top=60000)
 axis[4].set_ylim(bottom=0, top=3000)
 
@@ -114,6 +114,13 @@ axis[2].yaxis.set_major_formatter(mtick.PercentFormatter())
 # SETTING GRID #
 for ax in axis:
     ax.grid(axis='y')
+
+#Remove frames/spines
+for ax in axis:
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['bottom'].set_visible(False)
+    ax.spines['left'].set_visible(False)
 
 # SETTING WIDTH BETWEEN THE PLOTS #
 plt.subplots_adjust(wspace=0.75)
@@ -273,7 +280,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     # SETTING TICK LIMITS #
     axis[0].set_ylim(bottom=0)
     axis[1].set_ylim(bottom=0)
-    axis[2].set_ylim(bottom=0, top=50)
+    axis[2].set_ylim(bottom=0, top=30)
     axis[3].set_ylim(bottom=0)
     axis[4].set_ylim(bottom=0)
 
@@ -287,6 +294,13 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     # SETTING GRID #
     for ax in axis:
         ax.grid(axis='y')
+
+    #Remove frames/spines
+    for ax in axis:
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
 
     # SETTING WIDTH BETWEEN THE PLOTS #
     plt.subplots_adjust(wspace=0.65)
@@ -302,12 +316,10 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascending=False)['state']:
 
     #if you only want one state, use this. Otherwise, comment out.
-    """
     if focus_state == 'FL':
         pass
     else:
          continue
-    """
 
     if focus_state not in ['AS', 'GU', 'MP', 'NA' 'PR', 'VI']:
         pass
@@ -471,3 +483,5 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 
 
 # In[ ]:
+
+
