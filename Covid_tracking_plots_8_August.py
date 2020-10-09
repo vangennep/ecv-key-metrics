@@ -4,14 +4,14 @@
 # In[1]:
 
 
-import pandas as pd 
-import numpy as np 
+import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
-import urllib.request, json 
+import urllib.request, json
 import matplotlib.ticker as mtick
 from matplotlib.patches import Rectangle
 from matplotlib.dates import DateFormatter
-import datetime 
+import datetime
 from matplotlib import rc,rcParams
 import dateutil.relativedelta
 
@@ -90,7 +90,7 @@ date_form = DateFormatter("%b-%d")
 # SETTING LABEL TO TOP & FORMATTING DATE #
 for ax in axis:
     ax.xaxis.set_label_position('top')
-    ax.xaxis.set_major_formatter(date_form)    
+    ax.xaxis.set_major_formatter(date_form)
 
 # SETTING TICK PARAMATERS #
 for ax in axis:
@@ -106,7 +106,7 @@ axis[4].set_ylim(bottom=0, top=3000)
 
 # FOR PUTTING COMMAS IN NUMBERS #
 for ax in axis:
-    ax.set_yticklabels(['{:,}'.format(int(x)) for x in ax.get_yticks().tolist()])              
+    ax.set_yticklabels(['{:,}'.format(int(x)) for x in ax.get_yticks().tolist()])
 
 # SETTING Y AXIS IN % FOR PLOT 3#
 axis[2].yaxis.set_major_formatter(mtick.PercentFormatter())
@@ -129,20 +129,20 @@ plt.close(fig)
 
 
 for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascending=False)['state']:
-    
-    #if you only want one state, use this. Otherwise, comment out. 
+
+    #if you only want one state, use this. Otherwise, comment out.
     """
     if focus_state == 'AZ':
         pass
     else:
          continue
     """
-    
+
     if focus_state not in ['AS', 'GU', 'MP', 'NA' 'PR', 'VI']:
         pass
     else:
         continue
-    
+
     states = {
         'AK': 'Alaska',
         'AL': 'Alabama',
@@ -203,17 +203,17 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
         'WY': 'Wyoming'
              }
     state_full_name = str(states[focus_state])
-    
+
     focus = df[df['state']==focus_state].drop('state', axis=1)
     focus.index = pd.date_range(end=df['date'][0],periods=len(focus), freq='D')[::-1]
 
     #offset = 45
     #focus =  focus.iloc[:-offset]
-    
+
     fig, axis= plt.subplots(1, 5,figsize=(20,9) , squeeze=False)
     axis = axis.flatten()
-    
-    
+
+
     window = 7
 
     focus['average'] = focus['positiveIncrease'].rolling(window=window, min_periods=1, center=True).mean()
@@ -231,7 +231,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     # SETTING FONT #
     rc('font',weight='light')
     rc('axes', lw=0.01)
-    
+
     # LINE PLOT #
     axis[0].plot(focus['average'], color = 'black', lw=3)
     axis[1].plot(focus['average_new_tests'],color='green', lw=3 )
@@ -248,8 +248,8 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 
     # SETTING FIGURE MAIN TITLE #
     fig.suptitle('{} COVID-19 METRICS, 7-DAY AVERAGE'.format(state_full_name.upper()), fontsize=30, y =1, alpha=0.7)
-    
-    
+
+
     # SETTING SUBPLOTS TITLE #
     axis[0].set_title('Daily new cases',fontsize=17, y=1.03, alpha=0.5)
     axis[1].set_title('Daily new tests',fontsize=17, y=1.03, alpha=0.5)
@@ -263,7 +263,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     # SETTING LABEL TO TOP & FORMATTING DATE #
     for ax in axis:
         ax.xaxis.set_label_position('top')
-        ax.xaxis.set_major_formatter(date_form)    
+        ax.xaxis.set_major_formatter(date_form)
 
     # SETTING TICK PARAMATERS #
     for ax in axis:
@@ -279,7 +279,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 
     # FOR PUTTING COMMAS IN NUMBERS #
     for ax in axis:
-        ax.set_yticklabels(['{:,}'.format(int(x)) for x in ax.get_yticks().tolist()])              
+        ax.set_yticklabels(['{:,}'.format(int(x)) for x in ax.get_yticks().tolist()])
 
     # SETTING Y AXIS IN % FOR PLOT 3#
     axis[2].yaxis.set_major_formatter(mtick.PercentFormatter())
@@ -290,8 +290,8 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 
     # SETTING WIDTH BETWEEN THE PLOTS #
     plt.subplots_adjust(wspace=0.65)
-    
-    plt.savefig('figures/%s.png'% (state_full_name), dpi=150, bbox_inches='tight', pad_inches=1)
+
+    plt.savefig(r'figures/%s.png'% (state_full_name), dpi=150, bbox_inches='tight', pad_inches=1)
     plt.close(fig)
     #plt.show()
 
@@ -300,20 +300,20 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 
 
 for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascending=False)['state']:
-    
-    #if you only want one state, use this. Otherwise, comment out. 
+
+    #if you only want one state, use this. Otherwise, comment out.
     """
     if focus_state == 'FL':
         pass
     else:
          continue
     """
-    
+
     if focus_state not in ['AS', 'GU', 'MP', 'NA' 'PR', 'VI']:
         pass
     else:
         continue
-    
+
     states = {
         'AK': 'Alaska',
         'AL': 'Alabama',
@@ -374,17 +374,17 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
         'WY': 'Wyoming'
              }
     state_full_name = str(states[focus_state])
-    
+
     focus = df[df['state']==focus_state].drop('state', axis=1)
     focus.index = pd.date_range(end=df['date'][0],periods=len(focus), freq='D')[::-1]
 
     #offset = 45
     #focus =  focus.iloc[:-offset]
-    
+
     fig, axis= plt.subplots(1, 5,figsize=(20,9) , squeeze=False)
     axis = axis.flatten()
-    
-    
+
+
     window = 7
 
     focus['average'] = focus['positiveIncrease'].rolling(window=window, min_periods=1, center=True).mean()
@@ -402,7 +402,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     # SETTING FONT #
     rc('font',weight='light')
     rc('axes', lw=0.01)
-    
+
     # LINE PLOT #
     axis[0].plot(focus['average'], color = 'black', lw=3)
     axis[1].plot(focus['average_new_tests'],color='green', lw=3 )
@@ -419,8 +419,8 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 
     # SETTING FIGURE MAIN TITLE #
     fig.suptitle('{} COVID-19 METRICS, 7-DAY AVERAGE'.format(state_full_name.upper()), fontsize=30, y =1, alpha=0.7)
-    
-    
+
+
     # SETTING SUBPLOTS TITLE #
     axis[0].set_title('Daily new cases',fontsize=17, y=1.03, alpha=0.5)
     axis[1].set_title('Daily new tests',fontsize=17, y=1.03, alpha=0.5)
@@ -434,7 +434,7 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     # SETTING LABEL TO TOP & FORMATTING DATE #
     for ax in axis:
         ax.xaxis.set_label_position('top')
-        ax.xaxis.set_major_formatter(date_form)    
+        ax.xaxis.set_major_formatter(date_form)
 
     # SETTING TICK PARAMATERS #
     for ax in axis:
@@ -447,14 +447,14 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
     axis[2].set_ylim(bottom=0, top=25)
     axis[3].set_ylim(bottom=0)
     axis[4].set_ylim(bottom=0)
-    
+
     #set x-range to be the present - 1 month ago
     for ax in axis:
         ax.set_xlim(left=df['date'][0]-dateutil.relativedelta.relativedelta(months=1), right=df['date'][0])
-        
+
     # FOR PUTTING COMMAS IN NUMBERS #
     for ax in axis:
-        ax.set_yticklabels(['{:,}'.format(int(x)) for x in ax.get_yticks().tolist()])              
+        ax.set_yticklabels(['{:,}'.format(int(x)) for x in ax.get_yticks().tolist()])
 
     # SETTING Y AXIS IN % FOR PLOT 3#
     axis[2].yaxis.set_major_formatter(mtick.PercentFormatter())
@@ -465,13 +465,9 @@ for focus_state in df[df['date']==df['date'][0]].sort_values('positive', ascendi
 
     # SETTING WIDTH BETWEEN THE PLOTS #
     plt.subplots_adjust(wspace=0.65)
-    
+
     #plt.savefig(r'covid_tracking_plots\experimental/%s.png'% (state_full_name+date+'_2'), dpi=150, bbox_inches='tight', pad_inches=1)
     #plt.show()
 
 
 # In[ ]:
-
-
-
-
