@@ -119,7 +119,7 @@ for ax in axis:
 plt.subplots_adjust(wspace=0.75)
 
 
-plt.savefig('figures/US.png', dpi=250, bbox_inches='tight', pad_inches=1)
+plt.savefig(r'figures/%s.png'% ('US'), dpi=250, bbox_inches='tight', pad_inches=1)
 plt.close(fig)
 
 #plt.show()
