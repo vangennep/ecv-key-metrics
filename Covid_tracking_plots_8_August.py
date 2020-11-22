@@ -99,9 +99,9 @@ for ax in axis:
 
 # SETTING TICK LIMITS #
 axis[0].set_ylim(bottom=0)
-axis[1].set_ylim(bottom=0, top=1600000)
+axis[1].set_ylim(bottom=0, top=1800000)
 axis[2].set_ylim(bottom=0, top=30)
-axis[3].set_ylim(bottom=0, top=60000)
+axis[3].set_ylim(bottom=0, top=80000)
 axis[4].set_ylim(bottom=0, top=3000)
 
 # FOR PUTTING COMMAS IN NUMBERS #
